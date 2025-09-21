@@ -15,3 +15,16 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    with open("./files/input/data.csv", "r") as file:
+        lines = file.readlines()
+        result = {}
+        for line in lines:
+            parts = line.split()
+            letter = parts[0]
+            col5_items = parts[4].split(",")
+            col5_sum = sum(int(item.split(":")[1]) for item in col5_items)
+            if letter in result:
+                result[letter] += col5_sum
+            else:
+                result[letter] = col5_sum
+    return result

@@ -16,3 +16,17 @@ def pregunta_11():
 
 
     """
+    with open("./files/input/data.csv", "r") as file:
+        lines = file.readlines()
+        letter_sums = {}
+        for line in lines:
+            parts = line.split()
+            number = int(parts[1])
+            letters = parts[3].split(",")
+            for letter in letters:
+                if letter in letter_sums:
+                    letter_sums[letter] += number
+                else:
+                    letter_sums[letter] = number
+        sorted_sums = dict(sorted(letter_sums.items()))
+    return sorted_sums
